@@ -60,7 +60,7 @@ abstract class AbstractGenerator
 
         foreach ($DOMElements as $DOMElement) {
             $creator = $this->getCreator();
-            $element = $DOMElement->toDomElement($creator);
+            $element = $DOMElement->toDOMElement($creator);
 
             if ($element) {
                 $this->xml->appendChild($element);

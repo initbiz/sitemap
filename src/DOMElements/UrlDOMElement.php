@@ -194,7 +194,7 @@ class UrlDOMElement implements ConvertingToDOMElement
      * @param DOMCreator $creator
      * @return DOMElement
      */
-    public function toDomElement(DOMCreator $creator): DOMElement
+    public function toDOMElement(DOMCreator $creator): DOMElement
     {
         $urlElement = $creator->createElement('url');
 
@@ -202,27 +202,27 @@ class UrlDOMElement implements ConvertingToDOMElement
         $urlElement->appendChild($element);
 
         $lastmod = $this->getLastmod();
-        if (!empty($lastmod)) {
+        if (!is_null($lastmod)) {
             $element = $creator->createElement('lastmod', $lastmod->format('c'));
             $urlElement->appendChild($element);
         }
 
         $changefreq = $this->getChangefreq();
-        if (!empty($changefreq)) {
+        if (!is_null($changefreq)) {
             $element = $creator->createElement('changefreq', $changefreq->value);
             $urlElement->appendChild($element);
         }
 
         $priority = $this->getPriority();
-        if (!empty($priority)) {
+        if (!is_null($priority)) {
             $element = $creator->createElement('priority', number_format($priority, 2));
             $urlElement->appendChild($element);
         }
 
         $images = $this->getImages();
-        if (!empty($images)) {
+        if (!is_null($images)) {
             foreach ($images as $image) {
-                $imageElement = $image->toDomElement($creator);
+                $imageElement = $image->toDOMElement($creator);
                 $urlElement->appendChild($imageElement);
             }
         }
@@ -230,7 +230,7 @@ class UrlDOMElement implements ConvertingToDOMElement
         $videos = $this->getVideos();
         if (!empty($videos)) {
             foreach ($videos as $video) {
-                $videoElement = $video->toDomElement($creator);
+                $videoElement = $video->toDOMElement($creator);
                 $urlElement->appendChild($videoElement);
             }
         }

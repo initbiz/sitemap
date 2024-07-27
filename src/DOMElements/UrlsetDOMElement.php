@@ -6,6 +6,7 @@ namespace Initbiz\Sitemap\DOMElements;
 
 use DOMElement;
 use Initbiz\Sitemap\Classes\DOMCreator;
+use Initbiz\Sitemap\Resources\UrlDOMElement;
 use Initbiz\Sitemap\Contracts\ConvertingToDOMElement;
 
 class UrlsetDOMElement implements ConvertingToDOMElement
@@ -28,7 +29,7 @@ class UrlsetDOMElement implements ConvertingToDOMElement
      * @param DOMCreator $creator
      * @return DOMElement
      */
-    public function toDomElement(DOMCreator $creator): DOMElement
+    public function toDOMElement(DOMCreator $creator): DOMElement
     {
         $urlSet = $creator->createElement('urlset');
         $urlSet->setAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
@@ -41,7 +42,7 @@ class UrlsetDOMElement implements ConvertingToDOMElement
                 break;
             }
 
-            $urlElement = $url->toDomElement($creator);
+            $urlElement = $url->toDOMElement($creator);
             $urlSet->appendChild($urlElement);
 
             $i++;

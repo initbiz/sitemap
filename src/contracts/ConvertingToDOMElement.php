@@ -18,5 +18,5 @@ interface ConvertingToDOMElement
      * @param DOMCreator $creator
      * @return DOMElement
      */
-    public function toDomElement(DOMCreator $creator): DOMElement;
+    public function toDOMElement(DOMCreator $creator): DOMElement;
 }

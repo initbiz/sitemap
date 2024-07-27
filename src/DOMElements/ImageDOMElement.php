@@ -8,7 +8,7 @@ use DOMElement;
 use Initbiz\Sitemap\Classes\DOMCreator;
 use Initbiz\Sitemap\Contracts\ConvertingToDOMElement;
 
-class SitemapDOMElement implements ConvertingToDOMElement
+class ImageDOMElement implements ConvertingToDOMElement
 {
     /**
      * Loc
@@ -43,12 +43,12 @@ class SitemapDOMElement implements ConvertingToDOMElement
      */
     public function toDOMElement(DOMCreator $creator): DOMElement
     {
-        $sitemapElement = $creator->createElement('sitemap');
+        $imageElement = $creator->createElement('image:image');
 
-        $element = $creator->createElement('loc', $this->getLoc());
-        $sitemapElement->appendChild($element);
+        $imageLocElement = $creator->createElement('image:loc', $this->getLoc());
+        $imageElement->appendChild($imageLocElement);
 
-        return $sitemapElement;
+        return $imageElement;
     }
 }
 
