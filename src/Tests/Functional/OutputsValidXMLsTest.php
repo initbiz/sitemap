@@ -2,13 +2,15 @@
 
 namespace Initbiz\Sitemap\Tests\Functional;
 
-use Initbiz\Sitemap\DOMElements\ImageDOMElement;
+use DateTime;
 use PHPUnit\Framework\TestCase;
+use Initbiz\Sitemap\DOMElements\UrlDOMElement;
 use Initbiz\Sitemap\Generators\BasicGenerator;
+use Initbiz\Sitemap\DOMElements\ImageDOMElement;
+use Initbiz\Sitemap\DOMElements\VideoDOMElement;
+use Initbiz\Sitemap\DOMElements\UrlsetDOMElement;
 use Initbiz\Sitemap\DOMElements\SitemapDOMElement;
 use Initbiz\Sitemap\DOMElements\SitemapIndexDOMElement;
-use Initbiz\Sitemap\DOMElements\UrlsetDOMElement;
-use Initbiz\Sitemap\DOMElements\UrlDOMElement;
 
 class OutputsValidXMLsTest extends TestCase
 {
@@ -83,6 +85,47 @@ class OutputsValidXMLsTest extends TestCase
 
         $xml = $generator->generate();
         $filePath = __DIR__ . '/../Fixtures/urlset_with_images.xml';
+        $this->assertXmlStringEqualsXmlFile($filePath, $xml);
+    }
+
+    public function testUrlSetWithVideos()
+    {
+        $url1 = new UrlDOMElement();
+        $url1->setloc('https://www.example.com/videos/some_video_landing_page.html');
+
+        $video1 = new VideoDOMElement();
+        $video1->setThumbnailLoc('https://www.example.com/thumbs/123.jpg');
+        $video1->setTitle('Grilling steaks for summer');
+        $video1->setDescription('Alkis shows you how to get perfectly done steaks every time');
+        $video1->setContentLoc('http://streamserver.example.com/video123.mp4');
+        $video1->setPlayerLoc('https://www.example.com/videoplayer.php?video=123');
+        $video1->setDuration(600);
+        $video1->setExpirationDate(new DateTime('2021-11-05T19:20:30+08:00'));
+        $video1->setRating(4.2);
+        $video1->setViewCount(12345);
+        $video1->setPublicationDate(new DateTime('2007-11-05T19:20:30+08:00'));
+        $video1->setFamilyFriendly(true);
+        $video1->setRequiresSubscription(true);
+        $video1->setLive(false);
+
+        $video2 = new VideoDOMElement();
+        $video2->setThumbnailLoc('https://www.example.com/thumbs/345.jpg');
+        $video2->setTitle('Grilling steaks for winter');
+        $video2->setDescription('In the freezing cold, Roman shows you how to get perfectly done steaks every time.');
+        $video2->setContentLoc('http://streamserver.example.com/video345.mp4');
+        $video2->setPlayerLoc('https://www.example.com/videoplayer.php?video=345');
+
+        $url1->setVideos([$video1, $video2]);
+
+        $urlSetDOMElement = new UrlsetDOMElement();
+        $urlSetDOMElement->setUrls([$url1]);
+
+        $DOMElements = [$urlSetDOMElement];
+        $generator = new BasicGenerator();
+        $generator->setDOMElements($DOMElements);
+
+        $xml = $generator->generate();
+        $filePath = __DIR__ . '/../Fixtures/urlset_with_videos.xml';
         $this->assertXmlStringEqualsXmlFile($filePath, $xml);
     }
 }

@@ -9,7 +9,7 @@ use DOMElement;
 use Initbiz\Sitemap\Classes\DOMCreator;
 use Initbiz\Sitemap\Contracts\ConvertingToDOMElement;
 
-class SitemapSingleVideoItem implements ConvertingToDOMElement
+class VideoDOMElement implements ConvertingToDOMElement
 {
     /**
      * Thumbnail loc
@@ -94,13 +94,6 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
      * @var bool
      */
     protected bool $requiresSubscription;
-
-    /**
-     * Uploader
-     *
-     * @var string
-     */
-    protected string $uploader;
 
     /**
      * Live
@@ -362,27 +355,6 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     }
 
     /**
-     * Get uploader
-     *
-     * @return string|null
-     */
-    public function getUploader(): ?string
-    {
-        return $this->uploader ?? null;
-    }
-
-    /**
-     * Set uploader
-     *
-     * @param string $uploader
-     * @return void
-     */
-    public function setUploader(string $uploader): void
-    {
-        $this->uploader = $uploader;
-    }
-
-    /**
      * Get live
      *
      * @return string|null
@@ -472,12 +444,6 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
         $requiresSubscription = $this->getRequiresSubscription();
         if (!is_null($requiresSubscription)) {
             $subElement = $creator->createElement('video:requires_subscription', $requiresSubscription ? 'yes' : 'no');
-            $videoElement->appendChild($subElement);
-        }
-
-        $uploader = $this->getUploader();
-        if (!is_null($uploader)) {
-            $subElement = $creator->createElement('video:uploader', $uploader);
             $videoElement->appendChild($subElement);
         }
 

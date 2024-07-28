@@ -8,6 +8,7 @@ use DateTime;
 use DOMElement;
 use Initbiz\Sitemap\Values\Changefreq;
 use Initbiz\Sitemap\Classes\DOMCreator;
+use Initbiz\Sitemap\DOMElements\VideoDOMElement;
 use Initbiz\Sitemap\Contracts\ConvertingToDOMElement;
 
 class UrlDOMElement implements ConvertingToDOMElement
