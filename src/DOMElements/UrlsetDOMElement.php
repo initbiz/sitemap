@@ -61,11 +61,11 @@ class UrlsetDOMElement implements ConvertingToDOMElement
     /**
      * Get the value of urls
      *
-     * @return array<UrlDOMElement>
+     * @return array<UrlDOMElement>|null
      */
-    public function getUrls(): array
+    public function getUrls(): ?array
     {
-        return $this->urls;
+        return $this->urls?? null;
     }
 
     /**

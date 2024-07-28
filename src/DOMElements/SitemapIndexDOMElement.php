@@ -21,11 +21,11 @@ class SitemapIndexDOMElement implements ConvertingToDOMElement
     /**
      * Get the value of sitemaps
      *
-     * @return array<SitemapDOMElement>
+     * @return array<SitemapDOMElement>|null
      */
-    public function getSitemaps(): array
+    public function getSitemaps(): ?array
     {
-        return $this->sitemaps;
+        return $this->sitemaps ?? null;
     }
 
     /**

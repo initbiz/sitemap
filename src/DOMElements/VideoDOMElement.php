@@ -105,11 +105,11 @@ class VideoDOMElement implements ConvertingToDOMElement
     /**
      * Get thumbnail loc
      *
-     * @return string
+     * @return string|null
      */
-    public function getThumbnailLoc(): string
+    public function getThumbnailLoc(): ?string
     {
-        return $this->thumbnailLoc;
+        return $this->thumbnailLoc ?? null;
     }
 
     /**
@@ -126,11 +126,11 @@ class VideoDOMElement implements ConvertingToDOMElement
     /**
      * Get title
      *
-     * @return string
+     * @return string|null
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
-        return $this->title;
+        return $this->title ?? null;
     }
 
     /**
@@ -147,11 +147,11 @@ class VideoDOMElement implements ConvertingToDOMElement
     /**
      * Get description
      *
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
-        return $this->description;
+        return $this->description ?? null;
     }
 
     /**
@@ -189,11 +189,11 @@ class VideoDOMElement implements ConvertingToDOMElement
     /**
      * Get player loc
      *
-     * @return string
+     * @return string|null
      */
-    public function getPlayerLoc(): string
+    public function getPlayerLoc(): ?string
     {
-        return $this->playerLoc;
+        return $this->playerLoc ?? null;
     }
 
     /**

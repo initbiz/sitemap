@@ -20,11 +20,11 @@ class SitemapDOMElement implements ConvertingToDOMElement
     /**
      * Get Loc attribute
      *
-     * @return string
+     * @return string|null
      */
-    public function getLoc(): string
+    public function getLoc(): ?string
     {
-        return $this->loc;
+        return $this->loc ?? null;
     }
 
     /**
@@ -51,4 +51,3 @@ class SitemapDOMElement implements ConvertingToDOMElement
         return $sitemapElement;
     }
 }
-
