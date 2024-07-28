@@ -168,11 +168,11 @@ class VideoDOMElement implements ConvertingToDOMElement
     /**
      * Get content Loc
      *
-     * @return string
+     * @return string|null
      */
-    public function getContentLoc(): string
+    public function getContentLoc(): ?string
     {
-        return $this->contentLoc;
+        return $this->contentLoc ?? null;
     }
 
     /**
@@ -397,13 +397,15 @@ class VideoDOMElement implements ConvertingToDOMElement
         $subElement = $creator->createElement('video:description', $description);
         $videoElement->appendChild($subElement);
 
-        $contentLoc = $this->getContentLoc();
-        $subElement = $creator->createElement('video:content_loc', $contentLoc);
-        $videoElement->appendChild($subElement);
-
         $playerLoc = $this->getPlayerLoc();
         $subElement = $creator->createElement('video:player_loc', $playerLoc);
         $videoElement->appendChild($subElement);
+
+        $contentLoc = $this->getContentLoc();
+        if (!is_null($contentLoc)) {
+            $subElement = $creator->createElement('video:content_loc', $contentLoc);
+            $videoElement->appendChild($subElement);
+        }
 
         $duration = $this->getDuration();
         if (!is_null($duration)) {
