@@ -7,8 +7,8 @@
       <video:thumbnail_loc>https://www.example.com/thumbs/123.jpg</video:thumbnail_loc>
       <video:title>Grilling steaks for summer</video:title>
       <video:description>Alkis shows you how to get perfectly done steaks every time</video:description>
-      <video:content_loc>http://streamserver.example.com/video123.mp4</video:content_loc>
       <video:player_loc>https://www.example.com/videoplayer.php?video=123</video:player_loc>
+      <video:content_loc>http://streamserver.example.com/video123.mp4</video:content_loc>
       <video:duration>600</video:duration>
       <video:expiration_date>2021-11-05T19:20:30+08:00</video:expiration_date>
       <video:rating>4.2</video:rating>
@@ -22,8 +22,8 @@
       <video:thumbnail_loc>https://www.example.com/thumbs/345.jpg</video:thumbnail_loc>
       <video:title>Grilling steaks for winter</video:title>
       <video:description>In the freezing cold, Roman shows you how to get perfectly done steaks every time.</video:description>
-      <video:content_loc>http://streamserver.example.com/video345.mp4</video:content_loc>
       <video:player_loc>https://www.example.com/videoplayer.php?video=345</video:player_loc>
+      <video:content_loc>http://streamserver.example.com/video345.mp4</video:content_loc>
     </video:video>
   </url>
 </urlset>
