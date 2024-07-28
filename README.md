@@ -17,15 +17,15 @@ Below you can find a few examples of usage of this library.
 
 ```php
     $url1 = new UrlDOMElement();
-    $url1->setloc('https://www.example.com/foo.html');
-    $url1->setlastmod('2022-06-04');
-    $url1->setpriority('1.0');
-    $url1->setchangefreq('always');
+    $url1->setLoc('https://www.example.com/foo.html');
+    $url1->setLastmod('2022-06-04');
+    $url1->setPriority('1.0');
+    $url1->setChangefreq('always');
 
     $url2 = new UrlDOMElement();
-    $url2->setloc('https://www.example.com/foo2.html');
-    $url2->setlastmod('2022-06-04');
-    $url2->setpriority('0.9');
+    $url2->setLoc('https://www.example.com/foo2.html');
+    $url2->setLastmod('2022-06-04');
+    $url2->setPriority('0.9');
 
     $urlSetDOMElement = new UrlsetDOMElement();
     $urlSetDOMElement->setUrls([$url1, $url2]);
