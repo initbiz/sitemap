@@ -6,7 +6,7 @@ namespace Initbiz\Sitemap\DOMElements;
 
 use DOMElement;
 use Initbiz\Sitemap\Classes\DOMCreator;
-use Initbiz\Sitemap\Resources\UrlDOMElement;
+use Initbiz\Sitemap\DOMElements\UrlDOMElement;
 use Initbiz\Sitemap\Contracts\ConvertingToDOMElement;
 
 class UrlsetDOMElement implements ConvertingToDOMElement
@@ -22,6 +22,27 @@ class UrlsetDOMElement implements ConvertingToDOMElement
      * @var array<UrlDOMElement>
      */
     protected array $urls;
+
+    /**
+     * Get the value of urls
+     *
+     * @return array<UrlDOMElement>
+     */
+    public function getUrls(): array
+    {
+        return $this->urls;
+    }
+
+    /**
+     * Set the value of urls
+     *
+     * @param array<UrlDOMElement> $urls
+     * @return void
+     */
+    public function setUrls(array $urls): void
+    {
+        $this->urls = $urls;
+    }
 
     /**
      * Method that should convert this item to XML DOMElement

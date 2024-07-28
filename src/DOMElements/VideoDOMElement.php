@@ -23,91 +23,91 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
      *
      * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * Description
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * Content Loc
      *
      * @var string
      */
-    protected $contentLoc;
+    protected string $contentLoc;
 
     /**
      * Player loc
      *
      * @var string
      */
-    protected $playerLoc;
+    protected string $playerLoc;
 
     /**
      * Duration
      *
      * @var int
      */
-    protected $duration;
+    protected int $duration;
 
     /**
      * Expiration date
      *
      * @var DateTime
      */
-    protected $expirationDate;
+    protected DateTime $expirationDate;
 
     /**
      * Rating
      *
      * @var float
      */
-    protected $rating;
+    protected float $rating;
 
     /**
      * View count
      *
      * @var int
      */
-    protected $viewCount;
+    protected int $viewCount;
 
     /**
      * Publication date
      *
      * @var DateTime
      */
-    protected $publicationDate;
+    protected DateTime $publicationDate;
 
     /**
      * Family friendly
      *
-     * @var string
+     * @var bool
      */
-    protected $familyFriendly;
+    protected bool $familyFriendly;
 
     /**
      * Requires subscription
      *
-     * @var string
+     * @var bool
      */
-    protected $requiresSubscription;
+    protected bool $requiresSubscription;
 
     /**
      * Uploader
      *
      * @var string
      */
-    protected $uploader;
+    protected string $uploader;
 
     /**
      * Live
      *
-     * @var string
+     * @var bool
      */
-    protected $live;
+    protected bool $live;
 
     /**
      * Get thumbnail loc
@@ -217,11 +217,11 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get duration
      *
-     * @return integer
+     * @return integer|null
      */
-    public function getDuration(): int
+    public function getDuration(): ?int
     {
-        return $this->duration;
+        return $this->duration ?? null;
     }
 
     /**
@@ -238,11 +238,11 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get expiration date
      *
-     * @return DateTime
+     * @return DateTime|null
      */
-    public function getExpirationDate(): DateTime
+    public function getExpirationDate(): ?DateTime
     {
-        return $this->expirationDate;
+        return $this->expirationDate ?? null;
     }
 
     /**
@@ -259,11 +259,11 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get rating
      *
-     * @return float
+     * @return float|null
      */
-    public function getRating(): float
+    public function getRating(): ?float
     {
-        return $this->rating;
+        return $this->rating ?? null;
     }
 
     /**
@@ -280,11 +280,11 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get view count
      *
-     * @return integer
+     * @return integer|null
      */
-    public function getViewCount(): int
+    public function getViewCount(): ?int
     {
-        return $this->viewCount;
+        return $this->viewCount ?? null;
     }
 
     /**
@@ -301,11 +301,11 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get publication date
      *
-     * @return DateTime
+     * @return DateTime|null
      */
-    public function getPublicationDate(): DateTime
+    public function getPublicationDate(): ?DateTime
     {
-        return $this->publicationDate;
+        return $this->publicationDate ?? null;
     }
 
     /**
@@ -322,20 +322,20 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get family friendly
      *
-     * @return string
+     * @return string|null
      */
-    public function getFamilyFriendly(): string
+    public function getFamilyFriendly(): ?bool
     {
-        return $this->familyFriendly;
+        return $this->familyFriendly ?? null;
     }
 
     /**
      * Set family friendly
      *
-     * @param string $familyFriendly
+     * @param bool $familyFriendly
      * @return void
      */
-    public function setFamilyFriendly(string $familyFriendly): void
+    public function setFamilyFriendly(bool $familyFriendly): void
     {
         $this->familyFriendly = $familyFriendly;
     }
@@ -343,20 +343,20 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get requires subscription
      *
-     * @return string
+     * @return string|null
      */
-    public function getRequiresSubscription(): string
+    public function getRequiresSubscription(): ?bool
     {
-        return $this->requiresSubscription;
+        return $this->requiresSubscription ?? null;
     }
 
     /**
      * Set requires subscription
      *
-     * @param string $requiresSubscription
+     * @param bool $requiresSubscription
      * @return void
      */
-    public function setRequiresSubscription(string $requiresSubscription): void
+    public function setRequiresSubscription(bool $requiresSubscription): void
     {
         $this->requiresSubscription = $requiresSubscription;
     }
@@ -364,11 +364,11 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get uploader
      *
-     * @return string
+     * @return string|null
      */
-    public function getUploader(): string
+    public function getUploader(): ?string
     {
-        return $this->uploader;
+        return $this->uploader ?? null;
     }
 
     /**
@@ -385,20 +385,20 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
     /**
      * Get live
      *
-     * @return string
+     * @return string|null
      */
-    public function getLive(): string
+    public function getLive(): ?bool
     {
-        return $this->live;
+        return $this->live ?? null;
     }
 
     /**
      * Set live
      *
-     * @param string $live
+     * @param bool $live
      * @return void
      */
-    public function setLive(string $live): void
+    public function setLive(bool $live): void
     {
         $this->live = $live;
     }
@@ -414,24 +414,79 @@ class SitemapSingleVideoItem implements ConvertingToDOMElement
         $videoElement = $creator->createElement('video:video');
 
         $thumbnailLoc = $this->getThumbnailLoc();
-        if (!is_null($thumbnailLoc)) {
-            $subElement = $creator->createElement('video:thumbnail_loc', $thumbnailLoc);
+        $subElement = $creator->createElement('video:thumbnail_loc', $thumbnailLoc);
+        $videoElement->appendChild($subElement);
+
+        $title = $this->getTitle();
+        $subElement = $creator->createElement('video:title', $title);
+        $videoElement->appendChild($subElement);
+
+        $description = $this->getDescription();
+        $subElement = $creator->createElement('video:description', $description);
+        $videoElement->appendChild($subElement);
+
+        $contentLoc = $this->getContentLoc();
+        $subElement = $creator->createElement('video:content_loc', $contentLoc);
+        $videoElement->appendChild($subElement);
+
+        $playerLoc = $this->getPlayerLoc();
+        $subElement = $creator->createElement('video:player_loc', $playerLoc);
+        $videoElement->appendChild($subElement);
+
+        $duration = $this->getDuration();
+        if (!is_null($duration)) {
+            $subElement = $creator->createElement('video:duration', (string) $duration);
             $videoElement->appendChild($subElement);
         }
 
-        $this->getTitle();
-        $this->getDescription();
-        $this->getContentLoc();
-        $this->getPlayerLoc();
-        $this->getDuration();
-        $this->getExpirationDate();
-        $this->getRating();
-        $this->getViewCount();
-        $this->getPublicationDate();
-        $this->getFamilyFriendly();
-        $this->getRequiresSubscription();
-        $this->getUploader();
-        $this->getLive();
+        $expirationDate = $this->getExpirationDate();
+        if (!is_null($expirationDate)) {
+            $subElement = $creator->createElement('video:expiration_date', $expirationDate->format('c'));
+            $videoElement->appendChild($subElement);
+        }
+
+        $rating = $this->getRating();
+        if (!is_null($rating)) {
+            $subElement = $creator->createElement('video:rating', number_format($rating, 1));
+            $videoElement->appendChild($subElement);
+        }
+
+        $viewCount = $this->getViewCount();
+        if (!is_null($viewCount)) {
+            $subElement = $creator->createElement('video:view_count', (string) $viewCount);
+            $videoElement->appendChild($subElement);
+        }
+
+        $publicationDate = $this->getPublicationDate();
+        if (!is_null($publicationDate)) {
+            $subElement = $creator->createElement('video:publication_date', $publicationDate->format('c'));
+            $videoElement->appendChild($subElement);
+        }
+
+        $familyFriendly = $this->getFamilyFriendly();
+        if (!is_null($familyFriendly)) {
+            $subElement = $creator->createElement('video:family_friendly', $familyFriendly ? 'yes' : 'no');
+            $videoElement->appendChild($subElement);
+        }
+
+        $requiresSubscription = $this->getRequiresSubscription();
+        if (!is_null($requiresSubscription)) {
+            $subElement = $creator->createElement('video:requires_subscription', $requiresSubscription ? 'yes' : 'no');
+            $videoElement->appendChild($subElement);
+        }
+
+        $uploader = $this->getUploader();
+        if (!is_null($uploader)) {
+            $subElement = $creator->createElement('video:uploader', $uploader);
+            $videoElement->appendChild($subElement);
+        }
+
+        $live = $this->getLive();
+        if (!is_null($live)) {
+            $subElement = $creator->createElement('video:live', $live ? 'yes' : 'no');
+            $videoElement->appendChild($subElement);
+        }
+
 
         return $videoElement;
     }

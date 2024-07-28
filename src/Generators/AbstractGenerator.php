@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Initbiz\Sitemap\Contracts;
+namespace Initbiz\Sitemap\Generators;
 
 use DOMDocument;
 use Initbiz\Sitemap\Classes\DOMCreator;
@@ -64,7 +64,6 @@ abstract class AbstractGenerator
 
             if ($element) {
                 $this->xml->appendChild($element);
-                $this->urlCount++;
             }
         }
 

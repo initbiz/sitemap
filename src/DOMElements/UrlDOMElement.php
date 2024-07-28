@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Initbiz\Sitemap\Resources;
+namespace Initbiz\Sitemap\DOMElements;
 
 use DateTime;
 use DOMElement;
@@ -101,7 +101,7 @@ class UrlDOMElement implements ConvertingToDOMElement
      */
     public function getVideos(): ?array
     {
-        return $this->videos;
+        return $this->videos ?? null;
     }
 
     /**
@@ -111,7 +111,7 @@ class UrlDOMElement implements ConvertingToDOMElement
      */
     public function getImages(): ?array
     {
-        return $this->images;
+        return $this->images ?? null;
     }
 
     /**
@@ -215,7 +215,7 @@ class UrlDOMElement implements ConvertingToDOMElement
 
         $priority = $this->getPriority();
         if (!is_null($priority)) {
-            $element = $creator->createElement('priority', number_format($priority, 2));
+            $element = $creator->createElement('priority', number_format($priority, 1));
             $urlElement->appendChild($element);
         }
 

@@ -1,22 +1,30 @@
 {
-  "name": "initbiz/sitemap",
-  "description": "Basic set of objects to build a sitemap generator",
-  "keywords": ["php", "sitemap"],
-  "homepage": "https://github.com/initbiz/sitemap",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Tomasz Strojny",
-      "email": "tomasz@init.biz"
+    "name": "initbiz/sitemap",
+    "description": "Basic set of objects to build a sitemap generator",
+    "keywords": [
+        "php",
+        "sitemap"
+    ],
+    "homepage": "https://github.com/initbiz/sitemap",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tomasz Strojny",
+            "email": "tomasz@init.biz"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-dom": "*",
+        "ext-xml": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6|^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Initbiz\\Sitemap\\": "src/"
+        }
     }
-  ],
-  "require": {
-    "php": "^8.1",
-    "ext-dom": "*",
-    "ext-xml": "*"
-  },
-  "autoload": {
-    "psr-4": {"Initbiz\\Sitemap\\": "src/"}
-  }
 }
