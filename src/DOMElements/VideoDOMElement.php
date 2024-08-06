@@ -397,7 +397,7 @@ class VideoDOMElement implements ConvertingToDOMElement
         $subElement = $creator->createElement('video:description', $description);
         $videoElement->appendChild($subElement);
 
-        $playerLoc = $this->getPlayerLoc();
+        $playerLoc = htmlspecialchars($this->getPlayerLoc());
         $subElement = $creator->createElement('video:player_loc', $playerLoc);
         $videoElement->appendChild($subElement);
 
