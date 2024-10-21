@@ -385,15 +385,15 @@ class VideoDOMElement implements ConvertingToDOMElement
     {
         $videoElement = $creator->createElement('video:video');
 
-        $thumbnailLoc = $this->getThumbnailLoc();
+        $thumbnailLoc = htmlspecialchars($this->getThumbnailLoc());
         $subElement = $creator->createElement('video:thumbnail_loc', $thumbnailLoc);
         $videoElement->appendChild($subElement);
 
-        $title = $this->getTitle();
+        $title = htmlspecialchars($this->getTitle());
         $subElement = $creator->createElement('video:title', $title);
         $videoElement->appendChild($subElement);
 
-        $description = $this->getDescription();
+        $description = htmlspecialchars($this->getDescription());
         $subElement = $creator->createElement('video:description', $description);
         $videoElement->appendChild($subElement);
 
@@ -403,7 +403,7 @@ class VideoDOMElement implements ConvertingToDOMElement
 
         $contentLoc = $this->getContentLoc();
         if (!is_null($contentLoc)) {
-            $subElement = $creator->createElement('video:content_loc', $contentLoc);
+            $subElement = $creator->createElement('video:content_loc', htmlspecialchars($contentLoc));
             $videoElement->appendChild($subElement);
         }
 
